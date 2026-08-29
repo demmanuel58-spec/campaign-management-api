@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "c1f2e3d4-5678-4abc-9def-0123456789ab",
+		"name": "Campaign Management API v1.0",
+		"description": "Postman test collection covering auth, clients, campaigns, tasks, and audit logs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register Manager",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"manager@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/register",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "manager@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "SecurePass123!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "login"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearerToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Hanan Premium Products\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/clients",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "clients"]
+						}
+					}
+				},
+				{
+					"name": "List Clients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearerToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/clients?page=1&limit=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "clients"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "10" }
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Campaigns",
+			"item": [
+				{
+					"name": "Create Campaign",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearerToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Hanan Wipes Launch\",\n  \"client_id\": 1,\n  \"description\": \"Digital and retail activation campaign\",\n  \"status\": \"PLANNING\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/campaigns",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "campaigns"]
+						}
+					}
+				},
+				{
+					"name": "List Campaigns (Filtered)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearerToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/campaigns?page=1&limit=10&status=PLANNING&search=Hanan",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "campaigns"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "10" },
+								{ "key": "status", "value": "PLANNING" },
+								{ "key": "search", "value": "Hanan" }
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Campaign Status",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearerToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/campaigns/1/status",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "campaigns", "1", "status"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "bearerToken",
+			"value": "YOUR_JWT_ACCESS_TOKEN_HERE"
+		}
+	]
+}
