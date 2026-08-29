@@ -10,7 +10,7 @@ A production-oriented FastAPI backend platform designed for managing marketing c
 Before transitioning into backend engineering, I managed marketing operations across consumer brands—handling multi-team approval pipelines, tight launch deadlines, and client deliverables. Real-world marketing workflows depend on strict state management and auditability. I built this system to translate operational realities into a structured, secure backend engine.
 
 ## System Architecture
-![Architecture](./docs/architecture.png)
+
 
 ```text
   [ Client Application / Postman ]
