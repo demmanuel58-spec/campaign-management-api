@@ -1,6 +1,6 @@
 # Campaign Management API v1.0
 
-[![Continuous Integration](https://github.com/your-username/campaign-management-api/actions/workflows/test.yml/badge.svg)](https://github.com/your-username/campaign-management-api/actions)
+[![Continuous Integration](https://github.com/demmanuel58-spec/campaign-management-api/actions/workflows/test.yml/badge.svg)](https://github.com/demmanuel58-spec/campaign-management-api/actions)
 [![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110.0-green.svg)](https://fastapi.tiangolo.com/)
 
@@ -10,7 +10,7 @@ A production-oriented FastAPI backend platform designed for managing marketing c
 Before transitioning into backend engineering, I managed marketing operations across consumer brands—handling multi-team approval pipelines, tight launch deadlines, and client deliverables. Real-world marketing workflows depend on strict state management and auditability. I built this system to translate operational realities into a structured, secure backend engine.
 
 ## System Architecture
-![Architecture](docs/architecture.png)
+![Architecture](./docs/architecture.png)
 
 ```text
   [ Client Application / Postman ]
