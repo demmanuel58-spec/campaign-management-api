@@ -4,7 +4,6 @@ services:
     env: docker
     plan: free
     dockerfilePath: Dockerfile
-    preDeployCommand: alembic upgrade head
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
