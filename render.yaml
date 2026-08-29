@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: campaign-management-api
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    preDeployCommand: alembic upgrade head
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: campaign-postgres
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_ORIGINS
+        value: "http://localhost:3000"
+      - key: ADMIN_SEED_PASSWORD
+        generateValue: true
+
+databases:
+  - name: campaign-postgres
+    plan: free
+    databaseName: campaign_db
+    user: campaign_user
